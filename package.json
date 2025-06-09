@@ -1,0 +1,74 @@
+{
+  "name": "alhajami-store",
+  "version": "1.0.0",
+  "description": "محلات الحجامي - تطبيق PWA لتجارة الشالات والطرحات والسجادات التركية",
+  "main": "index.html",
+  "scripts": {
+    "start": "serve -s . -l 3000",
+    "build": "echo 'No build process needed for vanilla PWA'",
+    "test": "echo 'No tests specified'",
+    "deploy": "gh-pages -d .",
+    "lint": "eslint *.js",
+    "serve": "python3 -m http.server 8000"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/krarar/alhijama.git"
+  },
+  "keywords": [
+    "pwa",
+    "progressive-web-app",
+    "shopping",
+    "ecommerce",
+    "shawls",
+    "carpets",
+    "hajj",
+    "umrah",
+    "iraq",
+    "najaf",
+    "محلات",
+    "شالات",
+    "طرحات",
+    "سجادات",
+    "حج",
+    "عمرة"
+  ],
+  "author": {
+    "name": "محلات الحجامي",
+    "email": "contact@alhajami.com",
+    "url": "https://krarar.github.io/alhijama/"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/krarar/alhijama/issues"
+  },
+  "homepage": "https://krarar.github.io/alhijama/",
+  "devDependencies": {
+    "serve": "^14.2.0",
+    "gh-pages": "^5.0.0",
+    "eslint": "^8.0.0"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead",
+    "not ie 11"
+  ],
+  "engines": {
+    "node": ">=14.0.0",
+    "npm": ">=6.0.0"
+  },
+  "pwa": {
+    "name": "محلات الحجامي",
+    "short_name": "الحجامي",
+    "theme_color": "#667eea",
+    "background_color": "#667eea",
+    "display": "standalone",
+    "scope": "/alhijama/",
+    "start_url": "/alhijama/"
+  },
+  "config": {
+    "port": 3000,
+    "host": "localhost"
+  }
+}

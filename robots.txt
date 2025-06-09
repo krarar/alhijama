@@ -1,0 +1,23 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://krarar.github.io/alhijama/sitemap.xml
+
+# Allow crawling of main pages
+Allow: /alhijama/
+Allow: /alhijama/index.html
+Allow: /alhijama/manifest.json
+
+# Allow crawling of assets
+Allow: /alhijama/icons/
+Allow: /alhijama/app.js
+Allow: /alhijama/sw.js
+
+# Disallow sensitive files
+Disallow: /alhijama/.git/
+Disallow: /alhijama/node_modules/
+Disallow: /alhijama/.env
+
+# Crawl-delay for respectful crawling
+Crawl-delay: 1
