@@ -1,102 +1,79 @@
 {
-  "name": "محلات الحجامي لتجارة الشالات الحملة",
+  "name": "محلات الحجامي - أجود الشالات والطرحات",
   "short_name": "محلات الحجامي",
-  "description": "أجود أنواع الشالات والطرحات والسجادات التركية ومستلزمات الحج والعمرة",
-  "start_url": "/alhijama/",
-  "scope": "/alhijama/",
-  "display": "standalone",
-  "orientation": "portrait",
-  "theme_color": "#667eea",
-  "background_color": "#667eea",
+  "description": "تطبيق محلات الحجامي - أجود أنواع الشالات والطرحات والسجادات التركية ومستلزمات الحج والعمرة في النجف الأشرف",
   "lang": "ar",
   "dir": "rtl",
-  "categories": ["shopping", "lifestyle", "business"],
-  "screenshots": [
-    {
-      "src": "https://firebasestorage.googleapis.com/v0/b/messageemeapp.appspot.com/o/alhijama%2F472208534_122180270408092809_6379164161521111948_n.jpg?alt=media&token=c2381395-7d6c-460c-a197-1a42d05b42c1",
-      "sizes": "540x720",
-      "type": "image/png",
-      "form_factor": "narrow"
-    },
-    {
-      "src": "https://firebasestorage.googleapis.com/v0/b/messageemeapp.appspot.com/o/alhijama%2F472208534_122180270408092809_6379164161521111948_n.jpg?alt=media&token=c2381395-7d6c-460c-a197-1a42d05b42c1",
-      "sizes": "720x540",
-      "type": "image/png",
-      "form_factor": "wide"
-    }
-  ],
+  "start_url": "/",
+  "display": "standalone",
+  "theme_color": "#8B5CF6",
+  "background_color": "#0F172A",
+  "orientation": "portrait",
+  "scope": "/",
   "icons": [
     {
       "src": "https://firebasestorage.googleapis.com/v0/b/messageemeapp.appspot.com/o/alhijama%2F472208534_122180270408092809_6379164161521111948_n.jpg?alt=media&token=c2381395-7d6c-460c-a197-1a42d05b42c1",
-      "sizes": "72x72",
-      "type": "image/png",
-      "purpose": "any maskable"
-    },
-    {
-      "src": "https://firebasestorage.googleapis.com/v0/b/messageemeapp.appspot.com/o/alhijama%2F472208534_122180270408092809_6379164161521111948_n.jpg?alt=media&token=c2381395-7d6c-460c-a197-1a42d05b42c1",
-      "sizes": "96x96",
-      "type": "image/png",
-      "purpose": "any maskable"
-    },
-    {
-      "src": "https://firebasestorage.googleapis.com/v0/b/messageemeapp.appspot.com/o/alhijama%2F472208534_122180270408092809_6379164161521111948_n.jpg?alt=media&token=c2381395-7d6c-460c-a197-1a42d05b42c1",
-      "sizes": "128x128",
-      "type": "image/png",
-      "purpose": "any maskable"
-    },
-    {
-      "src": "https://firebasestorage.googleapis.com/v0/b/messageemeapp.appspot.com/o/alhijama%2F472208534_122180270408092809_6379164161521111948_n.jpg?alt=media&token=c2381395-7d6c-460c-a197-1a42d05b42c1",
-      "sizes": "144x144",
-      "type": "image/png",
-      "purpose": "any maskable"
-    },
-    {
-      "src": "https://firebasestorage.googleapis.com/v0/b/messageemeapp.appspot.com/o/alhijama%2F472208534_122180270408092809_6379164161521111948_n.jpg?alt=media&token=c2381395-7d6c-460c-a197-1a42d05b42c1",
-      "sizes": "152x152",
-      "type": "image/png",
-      "purpose": "any maskable"
-    },
-    {
-      "src": "https://firebasestorage.googleapis.com/v0/b/messageemeapp.appspot.com/o/alhijama%2F472208534_122180270408092809_6379164161521111948_n.jpg?alt=media&token=c2381395-7d6c-460c-a197-1a42d05b42c1",
       "sizes": "192x192",
-      "type": "image/png",
-      "purpose": "any maskable"
-    },
-    {
-      "src": "https://firebasestorage.googleapis.com/v0/b/messageemeapp.appspot.com/o/alhijama%2F472208534_122180270408092809_6379164161521111948_n.jpg?alt=media&token=c2381395-7d6c-460c-a197-1a42d05b42c1",
-      "sizes": "384x384",
-      "type": "image/png",
+      "type": "image/jpeg",
       "purpose": "any maskable"
     },
     {
       "src": "https://firebasestorage.googleapis.com/v0/b/messageemeapp.appspot.com/o/alhijama%2F472208534_122180270408092809_6379164161521111948_n.jpg?alt=media&token=c2381395-7d6c-460c-a197-1a42d05b42c1",
       "sizes": "512x512",
-      "type": "image/png",
+      "type": "image/jpeg",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "https://firebasestorage.googleapis.com/v0/b/messageemeapp.appspot.com/o/alhijama%2F472208534_122180270408092809_6379164161521111948_n.jpg?alt=media&token=c2381395-7d6c-460c-a197-1a42d05b42c1",
+      "sizes": "256x256",
+      "type": "image/jpeg",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "https://firebasestorage.googleapis.com/v0/b/messageemeapp.appspot.com/o/alhijama%2F472208534_122180270408092809_6379164161521111948_n.jpg?alt=media&token=c2381395-7d6c-460c-a197-1a42d05b42c1",
+      "sizes": "128x128",
+      "type": "image/jpeg",
       "purpose": "any maskable"
     }
   ],
+  "categories": ["shopping", "business", "lifestyle"],
+  "screenshots": [
+    {
+      "src": "https://firebasestorage.googleapis.com/v0/b/messageemeapp.appspot.com/o/alhijama%2Fscreenshot-mobile.jpg?alt=media",
+      "sizes": "540x720",
+      "type": "image/jpeg",
+      "form_factor": "narrow"
+    }
+  ],
+  "prefer_related_applications": false,
+  "related_applications": [],
+  "edge_side_panel": {
+    "preferred_width": 400
+  },
   "shortcuts": [
     {
       "name": "الشالات والطرحات",
       "short_name": "الشالات",
       "description": "تصفح مجموعة الشالات والطرحات",
-      "url": "/alhijama/?category=shawls",
+      "url": "/?category=shawls",
       "icons": [
         {
           "src": "https://firebasestorage.googleapis.com/v0/b/messageemeapp.appspot.com/o/alhijama%2F472208534_122180270408092809_6379164161521111948_n.jpg?alt=media&token=c2381395-7d6c-460c-a197-1a42d05b42c1",
-          "sizes": "96x96"
+          "sizes": "192x192",
+          "type": "image/jpeg"
         }
       ]
     },
     {
       "name": "السجادات التركية",
       "short_name": "السجادات",
-      "description": "تصفح السجادات التركية الأصلية",
-      "url": "/alhijama/?category=carpets",
+      "description": "تصفح مجموعة السجادات التركية",
+      "url": "/?category=carpets",
       "icons": [
         {
           "src": "https://firebasestorage.googleapis.com/v0/b/messageemeapp.appspot.com/o/alhijama%2F472208534_122180270408092809_6379164161521111948_n.jpg?alt=media&token=c2381395-7d6c-460c-a197-1a42d05b42c1",
-          "sizes": "96x96"
+          "sizes": "192x192",
+          "type": "image/jpeg"
         }
       ]
     },
@@ -104,35 +81,41 @@
       "name": "مستلزمات الحج والعمرة",
       "short_name": "الحج والعمرة",
       "description": "تصفح مستلزمات الحج والعمرة",
-      "url": "/alhijama/?category=hajj",
+      "url": "/?category=hajj",
       "icons": [
         {
           "src": "https://firebasestorage.googleapis.com/v0/b/messageemeapp.appspot.com/o/alhijama%2F472208534_122180270408092809_6379164161521111948_n.jpg?alt=media&token=c2381395-7d6c-460c-a197-1a42d05b42c1",
-          "sizes": "96x96"
+          "sizes": "192x192",
+          "type": "image/jpeg"
         }
       ]
     },
     {
-      "name": "العروض الخاصة",
-      "short_name": "العروض",
-      "description": "تصفح أحدث العروض والخصومات",
-      "url": "/alhijama/?category=offers",
+      "name": "المفضلة",
+      "short_name": "المفضلة",
+      "description": "عرض المنتجات المفضلة",
+      "url": "/?favorites=true",
       "icons": [
         {
           "src": "https://firebasestorage.googleapis.com/v0/b/messageemeapp.appspot.com/o/alhijama%2F472208534_122180270408092809_6379164161521111948_n.jpg?alt=media&token=c2381395-7d6c-460c-a197-1a42d05b42c1",
-          "sizes": "96x96"
+          "sizes": "192x192",
+          "type": "image/jpeg"
         }
       ]
     }
   ],
-  "share_target": {
-    "action": "/alhijama/share-target/",
-    "method": "GET",
-    "params": {
-      "title": "title",
-      "text": "text",
-      "url": "url"
+  "file_handlers": [
+    {
+      "action": "/",
+      "accept": {
+        "image/*": [".jpg", ".jpeg", ".png", ".webp"]
+      }
     }
-  },
-  "prefer_related_applications": false
+  ],
+  "protocol_handlers": [
+    {
+      "protocol": "web+alhajami",
+      "url": "/?product=%s"
+    }
+  ]
 }
