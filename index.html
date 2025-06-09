@@ -8,6 +8,9 @@
     <meta name="keywords" content="شالات، طرحات، سجادات تركية، حج، عمرة، النجف، العراق، محلات الحجامي">
     <meta name="author" content="محلات الحجامي">
     
+    <!-- Base URL for GitHub Pages -->
+    <base href="./">
+    
     <!-- PWA Meta Tags -->
     <meta name="theme-color" content="#8B5CF6">
     <meta name="mobile-web-app-capable" content="yes">
@@ -20,7 +23,7 @@
     <link rel="apple-touch-icon" href="https://firebasestorage.googleapis.com/v0/b/messageemeapp.appspot.com/o/alhijama%2F472208534_122180270408092809_6379164161521111948_n.jpg?alt=media&token=c2381395-7d6c-460c-a197-1a42d05b42c1">
     
     <!-- PWA Manifest -->
-    <link rel="manifest" href="manifest.json">
+    <link rel="manifest" href="./manifest.json">
     
     <!-- External Resources -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
@@ -3647,7 +3650,7 @@
         // Service Worker للعمل بدون اتصال
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
-                navigator.serviceWorker.register('sw.js')
+                navigator.serviceWorker.register('./sw.js')
                     .then(registration => {
                         console.log('Service Worker مسجل بنجاح:', registration);
                     })
