@@ -15,9 +15,6 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="محلات الحجامي">
     
-    <!-- Manifest -->
-    <link rel="manifest" href="manifest.json">
-    
     <!-- Icons -->
     <link rel="icon" type="image/png" sizes="32x32" href="https://firebasestorage.googleapis.com/v0/b/messageemeapp.appspot.com/o/alhijama%2F472208534_122180270408092809_6379164161521111948_n.jpg?alt=media&token=c2381395-7d6c-460c-a197-1a42d05b42c1">
     
@@ -68,7 +65,7 @@
             --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1);
             --shadow-2xl: 0 25px 50px -12px rgb(0 0 0 / 0.25);
             
-            /* Typography - أحجام أصغر للهواتف */
+            /* Typography */
             --font-size-xs: 0.7rem;
             --font-size-sm: 0.8rem;
             --font-size-base: 0.875rem;
@@ -78,7 +75,7 @@
             --font-size-3xl: 1.5rem;
             --font-size-4xl: 1.875rem;
             
-            /* Spacing - مسافات محسنة للهواتف */
+            /* Spacing */
             --space-1: 0.2rem;
             --space-2: 0.4rem;
             --space-3: 0.6rem;
@@ -137,7 +134,7 @@
             z-index: -1;
         }
 
-        /* Header - مضغوط أكثر */
+        /* Header */
         .header {
             position: fixed;
             top: 0;
@@ -249,7 +246,7 @@
             font-weight: 700;
         }
 
-        /* Ads Section - مضغوط أكثر */
+        /* Ads Section */
         .ads-section {
             margin-top: 60px;
             padding: var(--space-4) 0;
@@ -321,7 +318,7 @@
             line-height: 1.3;
         }
 
-        /* Search Section - مضغوط */
+        /* Search Section */
         .search-section {
             padding: var(--space-5) 0;
             background: rgba(15, 23, 42, 0.15);
@@ -369,7 +366,7 @@
             margin-bottom: 80px;
         }
 
-        /* Section Headers - مضغوط */
+        /* Section Headers */
         .section-header {
             text-align: center;
             margin-bottom: var(--space-6);
@@ -391,7 +388,7 @@
             font-weight: 400;
         }
 
-        /* Products Grid - محسن للهواتف */
+        /* Products Grid */
         .products-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -415,7 +412,6 @@
             border-color: var(--primary-solid);
         }
 
-        /* نظام الصور المتعددة */
         .product-image-container {
             position: relative;
             height: 200px;
@@ -577,7 +573,6 @@
             font-weight: 500;
         }
 
-        /* أزرار المنتج الجديدة - أيقونات صغيرة جنب بعض */
         .product-actions {
             display: flex;
             justify-content: center;
@@ -715,7 +710,7 @@
             border: 1px solid rgba(255, 255, 255, 0.3);
         }
 
-        /* Sidebar - محسن */
+        /* Sidebar */
         .sidebar {
             position: fixed;
             top: 0;
@@ -810,7 +805,7 @@
             transform: translateX(-5px);
         }
 
-        /* Bottom Navigation - محسن */
+        /* Bottom Navigation */
         .bottom-nav {
             position: fixed;
             bottom: 0;
@@ -1097,6 +1092,65 @@
             justify-content: center;
             cursor: pointer;
             font-size: var(--font-size-xs);
+        }
+
+        /* Admin Tables */
+        .admin-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: var(--space-4);
+            background: var(--glass);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+        }
+
+        .admin-table th,
+        .admin-table td {
+            padding: var(--space-3);
+            text-align: right;
+            border-bottom: 1px solid var(--glass-border);
+        }
+
+        .admin-table th {
+            background: var(--primary-solid);
+            color: white;
+            font-weight: 600;
+        }
+
+        .admin-table td {
+            color: var(--gray-300);
+        }
+
+        .admin-table img {
+            width: 40px;
+            height: 40px;
+            border-radius: var(--radius-lg);
+            object-fit: cover;
+        }
+
+        .admin-actions {
+            display: flex;
+            gap: var(--space-2);
+        }
+
+        .admin-btn {
+            padding: var(--space-1) var(--space-2);
+            border: none;
+            border-radius: var(--radius-md);
+            cursor: pointer;
+            font-size: var(--font-size-xs);
+            font-weight: 600;
+            transition: all var(--transition-base);
+        }
+
+        .admin-btn.edit {
+            background: var(--secondary-solid);
+            color: white;
+        }
+
+        .admin-btn.delete {
+            background: var(--error-solid);
+            color: white;
         }
 
         /* Responsive Design */
@@ -1528,6 +1582,97 @@
         </div>
     </div>
 
+    <!-- Add Ad Modal -->
+    <div class="modal" id="addAdModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">
+                    <i class="fas fa-bullhorn"></i>
+                    إضافة إعلان جديد
+                </h3>
+                <button class="close-btn" onclick="closeModal('addAdModal')">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <form id="addAdForm" onsubmit="handleAddAd(event)">
+                <div class="form-group">
+                    <label class="form-label">عنوان الإعلان *</label>
+                    <input type="text" class="form-input" id="adTitle" required placeholder="أدخل عنوان الإعلان">
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">وصف الإعلان *</label>
+                    <textarea class="form-textarea" id="adDescription" rows="3" required placeholder="أدخل وصف الإعلان"></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">ربط بمنتج (اختياري)</label>
+                    <select class="form-select" id="adLinkedProduct">
+                        <option value="">بدون ربط</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">صورة الإعلان</label>
+                    <div class="image-upload" onclick="document.getElementById('adImageInput').click()">
+                        <i class="fas fa-image upload-icon"></i>
+                        <div style="font-size: var(--font-size-sm); font-weight: 600;">رفع صورة</div>
+                        <input type="file" id="adImageInput" accept="image/*" style="display: none;" onchange="previewAdImage(this)">
+                    </div>
+                    <div id="adImagePreview"></div>
+                </div>
+                
+                <button type="submit" class="btn btn-primary w-full">
+                    <i class="fas fa-save"></i>
+                    حفظ الإعلان
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Manage Modal -->
+    <div class="modal" id="manageModal">
+        <div class="modal-content" style="max-width: 800px;">
+            <div class="modal-header">
+                <h3 class="modal-title" id="manageModalTitle">
+                    <i class="fas fa-edit"></i>
+                    إدارة العناصر
+                </h3>
+                <button class="close-btn" onclick="closeModal('manageModal')">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <div id="manageContent">
+                <!-- المحتوى سيُحمل هنا -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Messages Modal -->
+    <div class="modal" id="messagesModal">
+        <div class="modal-content" style="max-width: 600px;">
+            <div class="modal-header">
+                <h3 class="modal-title">
+                    <i class="fas fa-envelope"></i>
+                    رسائل العملاء
+                </h3>
+                <button class="close-btn" onclick="closeModal('messagesModal')">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <div id="messagesContent">
+                <div style="text-align: center; padding: var(--space-8); color: var(--gray-400);">
+                    <i class="fas fa-envelope-open" style="font-size: var(--font-size-4xl); margin-bottom: var(--space-4); opacity: 0.5;"></i>
+                    <h3 style="font-size: var(--font-size-xl); font-weight: 600; margin-bottom: var(--space-2); color: var(--gray-300);">لا توجد رسائل</h3>
+                    <p style="font-size: var(--font-size-base);">ستظهر رسائل العملاء هنا عند توفرها</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Product Detail Modal -->
     <div class="modal" id="productDetailModal">
         <div class="modal-content">
@@ -1575,13 +1720,13 @@
         let currentProductId = null;
         let deferredPrompt = null;
         let productImages = [];
+        let adImage = null;
 
         // PWA Install
         window.addEventListener('beforeinstallprompt', (e) => {
             e.preventDefault();
             deferredPrompt = e;
             
-            // عرض رسالة التثبيت للمستخدمين الجدد
             if (!localStorage.getItem('installPromptShown')) {
                 setTimeout(() => {
                     showInstallPrompt();
@@ -1662,10 +1807,25 @@
                 })) : [];
                 
                 displayProducts(filter);
+                updateProductsInAdForm();
                 
             } catch (error) {
                 console.error('خطأ في تحميل المنتجات:', error);
                 showNotification('خطأ في تحميل المنتجات', 'error');
+            }
+        }
+
+        // تحديث قائمة المنتجات في نموذج الإعلان
+        function updateProductsInAdForm() {
+            const select = document.getElementById('adLinkedProduct');
+            if (select) {
+                select.innerHTML = '<option value="">بدون ربط</option>';
+                products.forEach(product => {
+                    const option = document.createElement('option');
+                    option.value = product.id;
+                    option.textContent = product.name;
+                    select.appendChild(option);
+                });
             }
         }
 
@@ -1700,15 +1860,19 @@
 
         // إنشاء بطاقة المنتج
         function createProductCard(product) {
-            const images = product.images || [product.image];
+            const images = product.images || (product.image ? [product.image] : []);
             const validImages = images.filter(img => img && img.trim() !== '');
+            
+            if (validImages.length === 0) {
+                validImages.push('https://via.placeholder.com/400x300?text=صورة+المنتج');
+            }
             
             return `
                 <div class="product-card" data-id="${product.id}">
                     <div class="product-image-container">
                         <div class="product-images-slider" id="slider_${product.id}">
                             ${validImages.map((img, index) => `
-                                <img src="${img || 'https://via.placeholder.com/400x300?text=صورة+المنتج'}" 
+                                <img src="${img}" 
                                      alt="${product.name}" 
                                      class="product-image"
                                      style="transform: translateX(${index * -100}%)"
@@ -1871,6 +2035,14 @@
             `).join('');
         }
 
+        // عرض المنتج المربوط بالإعلان
+        function showLinkedProduct(productId) {
+            const product = products.find(p => p.id === productId);
+            if (product) {
+                showProductDetail(productId);
+            }
+        }
+
         // إعداد تحريك الإعلانات
         function setupAdsAnimation() {
             const wrapper = document.getElementById('adsWrapper');
@@ -1977,8 +2149,7 @@
             message += `⭐ *التقييم:* ${product.rating || 4.5}/5 نجوم (${product.reviews || 0} تقييم)\n`;
             message += `📂 *التصنيف:* ${getCategoryName(product.category)}\n\n`;
             
-            // إضافة الصور
-            const images = product.images || [product.image];
+            const images = product.images || (product.image ? [product.image] : []);
             const validImages = images.filter(img => img && img.trim() !== '');
             if (validImages.length > 0) {
                 message += `📸 *صور المنتج:*\n`;
@@ -2002,7 +2173,7 @@
         // إضافة صورة جديدة للمنتج
         function addImageUpload() {
             const container = document.getElementById('imageUploadContainer');
-            const currentUploads = container.querySelectorAll('.image-upload').length - 1; // -1 for the add button
+            const currentUploads = container.querySelectorAll('.image-upload').length - 1;
 
             if (currentUploads >= 5) {
                 showNotification('⚠️ يمكن إضافة 5 صور كحد أقصى', 'error');
@@ -2020,7 +2191,6 @@
             
             uploadDiv.onclick = () => uploadDiv.querySelector('input').click();
             
-            // إدراج قبل زر الإضافة
             const addButton = container.querySelector('.image-upload:last-child');
             container.insertBefore(uploadDiv, addButton);
         }
@@ -2040,10 +2210,7 @@
                         </div>
                     `;
                     
-                    // حفظ الملف
-                    if (!productImages[index]) {
-                        productImages[index] = input.files[0];
-                    }
+                    productImages[index] = input.files[0];
                 };
                 reader.readAsDataURL(input.files[0]);
             }
@@ -2060,6 +2227,33 @@
             
             uploadDiv.onclick = () => uploadDiv.querySelector('input').click();
             productImages[index] = null;
+        }
+
+        // معاينة صورة الإعلان
+        function previewAdImage(input) {
+            if (input.files && input.files[0]) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    document.getElementById('adImagePreview').innerHTML = `
+                        <div class="image-preview-container">
+                            <img src="${e.target.result}" class="image-preview" alt="معاينة">
+                            <button type="button" class="remove-image" onclick="removeAdImage()">
+                                <i class="fas fa-times"></i>
+                            </button>
+                        </div>
+                    `;
+                    
+                    adImage = input.files[0];
+                };
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        // إزالة صورة الإعلان
+        function removeAdImage() {
+            document.getElementById('adImagePreview').innerHTML = '';
+            document.getElementById('adImageInput').value = '';
+            adImage = null;
         }
 
         // رفع صورة إلى Firebase Storage
@@ -2099,7 +2293,6 @@
                     return;
                 }
                 
-                // رفع الصور
                 const imageUrls = [];
                 const validImages = productImages.filter(img => img !== null && img !== undefined);
                 
@@ -2125,10 +2318,13 @@
                     badge: badge || null,
                     rating: 4.5,
                     reviews: 0,
-                    images: imageUrls.length > 0 ? imageUrls : (editId ? undefined : []),
-                    image: imageUrls[0] || (editId ? undefined : ''), // للتوافق مع النسخة السابقة
                     updatedAt: firebase.database.ServerValue.TIMESTAMP
                 };
+
+                if (imageUrls.length > 0) {
+                    productData.images = imageUrls;
+                    productData.image = imageUrls[0];
+                }
 
                 if (editId) {
                     await database.ref(`products/${editId}`).update(productData);
@@ -2142,7 +2338,6 @@
                 closeModal('addProductModal');
                 await loadProducts(currentFilter);
                 
-                // إعادة تعيين المتغيرات
                 productImages = [];
                 
                 hideLoadingSpinner();
@@ -2154,7 +2349,61 @@
             }
         }
 
-        // باقي الدوال...
+        // معالج إضافة إعلان
+        async function handleAddAd(event) {
+            event.preventDefault();
+            
+            try {
+                showLoadingSpinner();
+                
+                const title = document.getElementById('adTitle').value.trim();
+                const description = document.getElementById('adDescription').value.trim();
+                const linkedProduct = document.getElementById('adLinkedProduct').value;
+                const editId = event.target.dataset.editId;
+                
+                if (!title || !description) {
+                    showNotification('يرجى ملء جميع الحقول المطلوبة', 'error');
+                    hideLoadingSpinner();
+                    return;
+                }
+                
+                const adData = {
+                    title,
+                    description,
+                    linkedProduct: linkedProduct || null,
+                    updatedAt: firebase.database.ServerValue.TIMESTAMP
+                };
+
+                if (adImage) {
+                    const imageUrl = await uploadImage(adImage, 'ads');
+                    adData.image = imageUrl;
+                }
+
+                if (editId) {
+                    await database.ref(`ads/${editId}`).update(adData);
+                    showNotification('✅ تم تحديث الإعلان بنجاح');
+                } else {
+                    adData.createdAt = firebase.database.ServerValue.TIMESTAMP;
+                    await database.ref('ads').push(adData);
+                    showNotification('✅ تم إضافة الإعلان بنجاح');
+                }
+                
+                closeModal('addAdModal');
+                await loadAds();
+                
+                adImage = null;
+                document.getElementById('adImagePreview').innerHTML = '';
+                
+                hideLoadingSpinner();
+                
+            } catch (error) {
+                console.error('خطأ في حفظ الإعلان:', error);
+                showNotification('❌ خطأ في حفظ الإعلان', 'error');
+                hideLoadingSpinner();
+            }
+        }
+
+        // دوال التصنيفات والتنقل
         function getCategoryName(category) {
             const names = {
                 'all': 'جميع المنتجات',
@@ -2264,11 +2513,13 @@
             let total = 0;
             container.innerHTML = cart.map(item => {
                 total += item.price * item.quantity;
+                const itemImage = item.images && item.images[0] ? item.images[0] : (item.image || 'https://via.placeholder.com/60x60?text=صورة');
                 return `
                     <div style="display: flex; gap: var(--space-3); padding: var(--space-3); background: var(--glass); border-radius: var(--radius-lg); margin-bottom: var(--space-3); border: 1px solid var(--glass-border);">
-                        <img src="${item.image || item.images?.[0] || 'https://via.placeholder.com/60x60?text=صورة'}" 
+                        <img src="${itemImage}" 
                              alt="${item.name}" 
-                             style="width: 60px; height: 60px; border-radius: var(--radius-lg); object-fit: cover; flex-shrink: 0;">
+                             style="width: 60px; height: 60px; border-radius: var(--radius-lg); object-fit: cover; flex-shrink: 0;"
+                             onerror="this.src='https://via.placeholder.com/60x60?text=صورة'">
                         
                         <div style="flex: 1;">
                             <h4 style="color: white; font-weight: 600; margin-bottom: var(--space-1); font-size: var(--font-size-base);">${item.name}</h4>
@@ -2365,8 +2616,7 @@
                 message += `   📦 الكمية: ${item.quantity}\n`;
                 message += `   💵 المجموع: ${(item.price * item.quantity).toLocaleString()} د.ع\n`;
                 
-                // إضافة صور المنتج
-                const images = item.images || [item.image];
+                const images = item.images || (item.image ? [item.image] : []);
                 const validImages = images.filter(img => img && img.trim() !== '');
                 if (validImages.length > 0) {
                     message += `   📸 الصور:\n`;
@@ -2388,6 +2638,7 @@
             showNotification('📱 تم توجيهك لإكمال الطلب عبر واتساب');
         }
 
+        // دوال الشريط الجانبي والقوائم
         function toggleSidebar() {
             const sidebar = document.getElementById('sidebar');
             const overlay = document.getElementById('overlay');
@@ -2419,6 +2670,7 @@
             document.getElementById('overlay').classList.remove('active');
         }
 
+        // دوال الإدارة
         function toggleAdmin() {
             const password = prompt('أدخل كلمة مرور الإدارة:');
             if (password === 'admin123') {
@@ -2431,7 +2683,7 @@
                     hideAdminSection();
                     showNotification('🔒 تم إلغاء وضع الإدارة');
                 }
-            } else {
+            } else if (password !== null) {
                 showNotification('❌ كلمة مرور خاطئة', 'error');
             }
         }
@@ -2449,7 +2701,6 @@
             document.querySelector('#addProductModal .modal-title').innerHTML = '<i class="fas fa-plus-circle"></i> إضافة منتج جديد';
             delete document.getElementById('addProductForm').dataset.editId;
             
-            // إعادة تعيين حاوية الصور
             const container = document.getElementById('imageUploadContainer');
             container.innerHTML = `
                 <div class="image-upload" onclick="addImageUpload()">
@@ -2464,13 +2715,252 @@
             closeSidebar();
         }
 
+        function openAddAdModal() {
+            document.getElementById('addAdForm').reset();
+            document.querySelector('#addAdModal .modal-title').innerHTML = '<i class="fas fa-bullhorn"></i> إضافة إعلان جديد';
+            delete document.getElementById('addAdForm').dataset.editId;
+            
+            document.getElementById('adImagePreview').innerHTML = '';
+            adImage = null;
+            updateProductsInAdForm();
+            
+            document.getElementById('addAdModal').classList.add('active');
+            document.getElementById('overlay').classList.add('active');
+            closeSidebar();
+        }
+
+        function openManageModal(type) {
+            const modal = document.getElementById('manageModal');
+            const title = document.getElementById('manageModalTitle');
+            const content = document.getElementById('manageContent');
+            
+            if (type === 'products') {
+                title.innerHTML = '<i class="fas fa-edit"></i> إدارة المنتجات';
+                loadProductsManagement(content);
+            } else if (type === 'ads') {
+                title.innerHTML = '<i class="fas fa-images"></i> إدارة الإعلانات';
+                loadAdsManagement(content);
+            }
+            
+            modal.classList.add('active');
+            document.getElementById('overlay').classList.add('active');
+            closeSidebar();
+        }
+
+        function loadProductsManagement(container) {
+            if (products.length === 0) {
+                container.innerHTML = `
+                    <div style="text-align: center; padding: var(--space-8); color: var(--gray-400);">
+                        <i class="fas fa-box-open" style="font-size: var(--font-size-4xl); margin-bottom: var(--space-4); opacity: 0.5;"></i>
+                        <h3 style="font-size: var(--font-size-xl); font-weight: 600; margin-bottom: var(--space-2); color: var(--gray-300);">لا توجد منتجات</h3>
+                        <p style="font-size: var(--font-size-base);">ابدأ بإضافة منتجات جديدة</p>
+                    </div>
+                `;
+                return;
+            }
+
+            container.innerHTML = `
+                <table class="admin-table">
+                    <thead>
+                        <tr>
+                            <th>الصورة</th>
+                            <th>الاسم</th>
+                            <th>السعر</th>
+                            <th>التصنيف</th>
+                            <th>الإجراءات</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        ${products.map(product => {
+                            const productImage = product.images && product.images[0] ? product.images[0] : (product.image || 'https://via.placeholder.com/40x40?text=صورة');
+                            return `
+                                <tr>
+                                    <td><img src="${productImage}" alt="${product.name}" onerror="this.src='https://via.placeholder.com/40x40?text=صورة'"></td>
+                                    <td>${product.name}</td>
+                                    <td>${parseInt(product.price).toLocaleString()} د.ع</td>
+                                    <td>${getCategoryName(product.category)}</td>
+                                    <td>
+                                        <div class="admin-actions">
+                                            <button class="admin-btn edit" onclick="editProduct('${product.id}')">
+                                                <i class="fas fa-edit"></i>
+                                            </button>
+                                            <button class="admin-btn delete" onclick="deleteProduct('${product.id}')">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            `;
+                        }).join('')}
+                    </tbody>
+                </table>
+            `;
+        }
+
+        function loadAdsManagement(container) {
+            if (ads.length === 0) {
+                container.innerHTML = `
+                    <div style="text-align: center; padding: var(--space-8); color: var(--gray-400);">
+                        <i class="fas fa-bullhorn" style="font-size: var(--font-size-4xl); margin-bottom: var(--space-4); opacity: 0.5;"></i>
+                        <h3 style="font-size: var(--font-size-xl); font-weight: 600; margin-bottom: var(--space-2); color: var(--gray-300);">لا توجد إعلانات</h3>
+                        <p style="font-size: var(--font-size-base);">ابدأ بإضافة إعلانات جديدة</p>
+                    </div>
+                `;
+                return;
+            }
+
+            container.innerHTML = `
+                <table class="admin-table">
+                    <thead>
+                        <tr>
+                            <th>الصورة</th>
+                            <th>العنوان</th>
+                            <th>الوصف</th>
+                            <th>المنتج المربوط</th>
+                            <th>الإجراءات</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        ${ads.map(ad => {
+                            const linkedProduct = ad.linkedProduct ? products.find(p => p.id === ad.linkedProduct) : null;
+                            return `
+                                <tr>
+                                    <td>
+                                        ${ad.image ? 
+                                            `<img src="${ad.image}" alt="${ad.title}">` : 
+                                            `<div style="width: 40px; height: 40px; background: var(--primary-solid); border-radius: var(--radius-lg); display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">${ad.title.charAt(0)}</div>`
+                                        }
+                                    </td>
+                                    <td>${ad.title}</td>
+                                    <td style="max-width: 200px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">${ad.description}</td>
+                                    <td>${linkedProduct ? linkedProduct.name : 'بدون ربط'}</td>
+                                    <td>
+                                        <div class="admin-actions">
+                                            <button class="admin-btn edit" onclick="editAd('${ad.id}')">
+                                                <i class="fas fa-edit"></i>
+                                            </button>
+                                            <button class="admin-btn delete" onclick="deleteAd('${ad.id}')">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            `;
+                        }).join('')}
+                    </tbody>
+                </table>
+            `;
+        }
+
+        // دوال تحرير وحذف المنتجات والإعلانات
+        async function editProduct(productId) {
+            const product = products.find(p => p.id === productId);
+            if (!product) return;
+
+            closeModal('manageModal');
+            
+            document.getElementById('productName').value = product.name;
+            document.getElementById('productDescription').value = product.description;
+            document.getElementById('productPrice').value = product.price;
+            document.getElementById('productOriginalPrice').value = product.originalPrice || '';
+            document.getElementById('productCategory').value = product.category;
+            document.getElementById('productBadge').value = product.badge || '';
+            
+            document.querySelector('#addProductModal .modal-title').innerHTML = '<i class="fas fa-edit"></i> تحرير المنتج';
+            document.getElementById('addProductForm').dataset.editId = productId;
+            
+            const container = document.getElementById('imageUploadContainer');
+            container.innerHTML = `
+                <div class="image-upload" onclick="addImageUpload()">
+                    <i class="fas fa-plus upload-icon"></i>
+                    <div style="font-size: var(--font-size-sm); font-weight: 600;">إضافة صورة</div>
+                </div>
+            `;
+            productImages = [];
+            
+            document.getElementById('addProductModal').classList.add('active');
+            document.getElementById('overlay').classList.add('active');
+        }
+
+        async function deleteProduct(productId) {
+            const product = products.find(p => p.id === productId);
+            if (!product) return;
+
+            if (confirm(`هل أنت متأكد من حذف المنتج "${product.name}"؟`)) {
+                try {
+                    showLoadingSpinner();
+                    await database.ref(`products/${productId}`).remove();
+                    showNotification('✅ تم حذف المنتج بنجاح');
+                    await loadProducts(currentFilter);
+                    openManageModal('products');
+                    hideLoadingSpinner();
+                } catch (error) {
+                    console.error('خطأ في حذف المنتج:', error);
+                    showNotification('❌ خطأ في حذف المنتج', 'error');
+                    hideLoadingSpinner();
+                }
+            }
+        }
+
+        async function editAd(adId) {
+            const ad = ads.find(a => a.id === adId);
+            if (!ad) return;
+
+            closeModal('manageModal');
+            
+            document.getElementById('adTitle').value = ad.title;
+            document.getElementById('adDescription').value = ad.description;
+            document.getElementById('adLinkedProduct').value = ad.linkedProduct || '';
+            
+            document.querySelector('#addAdModal .modal-title').innerHTML = '<i class="fas fa-edit"></i> تحرير الإعلان';
+            document.getElementById('addAdForm').dataset.editId = adId;
+            
+            document.getElementById('adImagePreview').innerHTML = '';
+            adImage = null;
+            updateProductsInAdForm();
+            
+            document.getElementById('addAdModal').classList.add('active');
+            document.getElementById('overlay').classList.add('active');
+        }
+
+        async function deleteAd(adId) {
+            const ad = ads.find(a => a.id === adId);
+            if (!ad) return;
+
+            if (confirm(`هل أنت متأكد من حذف الإعلان "${ad.title}"؟`)) {
+                try {
+                    showLoadingSpinner();
+                    await database.ref(`ads/${adId}`).remove();
+                    showNotification('✅ تم حذف الإعلان بنجاح');
+                    await loadAds();
+                    openManageModal('ads');
+                    hideLoadingSpinner();
+                } catch (error) {
+                    console.error('خطأ في حذف الإعلان:', error);
+                    showNotification('❌ خطأ في حذف الإعلان', 'error');
+                    hideLoadingSpinner();
+                }
+            }
+        }
+
+        function openMessagesModal() {
+            document.getElementById('messagesModal').classList.add('active');
+            document.getElementById('overlay').classList.add('active');
+            closeSidebar();
+        }
+
+        // عرض تفاصيل المنتج
         function showProductDetail(productId) {
             const product = products.find(p => p.id === productId);
             if (!product) return;
             
             currentProductId = productId;
-            const images = product.images || [product.image];
+            const images = product.images || (product.image ? [product.image] : []);
             const validImages = images.filter(img => img && img.trim() !== '');
+            
+            if (validImages.length === 0) {
+                validImages.push('https://via.placeholder.com/400x300?text=صورة+المنتج');
+            }
             
             document.getElementById('productDetailTitle').textContent = product.name;
             document.getElementById('productDetailContent').innerHTML = `
@@ -2480,7 +2970,8 @@
                             <div class="product-images-slider" id="detailSlider" style="display: flex; transition: transform 0.3s ease;">
                                 ${validImages.map((img, index) => `
                                     <img src="${img}" alt="${product.name}" 
-                                         style="width: 100%; height: 300px; object-fit: cover; flex-shrink: 0; transform: translateX(${index * -100}%);">
+                                         style="width: 100%; height: 300px; object-fit: cover; flex-shrink: 0; transform: translateX(${index * -100}%);"
+                                         onerror="this.src='https://via.placeholder.com/400x300?text=صورة+المنتج'">
                                 `).join('')}
                             </div>
                         </div>
@@ -2526,6 +3017,7 @@
             `;
             
             document.getElementById('productDetailModal').classList.add('active');
+            document.getElementById('overlay').classList.add('active');
         }
 
         function changeDetailImage(imageIndex) {
@@ -2541,6 +3033,7 @@
             }
         }
 
+        // دوال أخرى
         function focusSearch() {
             document.getElementById('searchInput').focus();
         }
@@ -2659,7 +3152,7 @@
             });
         }
 
-        console.log('🚀 تطبيق محلات الحجامي المحدث جاهز للعمل!');
+        console.log('🚀 تطبيق محلات الحجامي المحسن جاهز للعمل!');
     </script>
 </body>
 </html>
