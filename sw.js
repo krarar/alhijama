@@ -4,8 +4,7 @@ const urlsToCache = [
   '/alhijama/index.html',
   '/alhijama/app.js',
   '/alhijama/manifest.json',
-  '/alhijama/icons/icon-192x192.png',
-  '/alhijama/icons/icon-512x512.png',
+  'https://firebasestorage.googleapis.com/v0/b/messageemeapp.appspot.com/o/alhijama%2F472208534_122180270408092809_6379164161521111948_n.jpg?alt=media&token=c2381395-7d6c-460c-a197-1a42d05b42c1',
   'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css',
   'https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700&display=swap'
 ];
@@ -118,10 +117,11 @@ function doBackgroundSync() {
 self.addEventListener('push', event => {
   console.log('Service Worker: Push Event');
   
+  const iconUrl = 'https://firebasestorage.googleapis.com/v0/b/messageemeapp.appspot.com/o/alhijama%2F472208534_122180270408092809_6379164161521111948_n.jpg?alt=media&token=c2381395-7d6c-460c-a197-1a42d05b42c1';
   const options = {
     body: event.data ? event.data.text() : 'عرض جديد من محلات الحجامي!',
-    icon: '/alhijama/icons/icon-192x192.png',
-    badge: '/alhijama/icons/icon-72x72.png',
+    icon: iconUrl,
+    badge: iconUrl,
     vibrate: [100, 50, 100],
     data: {
       dateOfArrival: Date.now(),
@@ -131,12 +131,12 @@ self.addEventListener('push', event => {
       {
         action: 'explore',
         title: 'تصفح المنتجات',
-        icon: '/alhijama/icons/icon-72x72.png'
+        icon: iconUrl
       },
       {
         action: 'close',
         title: 'إغلاق',
-        icon: '/alhijama/icons/icon-72x72.png'
+        icon: iconUrl
       }
     ]
   };
