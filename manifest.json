@@ -4,12 +4,12 @@
   "description": "تطبيق محلات الحجامي - أجود أنواع الشالات والطرحات والسجادات التركية ومستلزمات الحج والعمرة في النجف الأشرف",
   "lang": "ar",
   "dir": "rtl",
-  "start_url": "/",
+  "start_url": "./",
   "display": "standalone",
   "theme_color": "#8B5CF6",
   "background_color": "#0F172A",
   "orientation": "portrait",
-  "scope": "/",
+  "scope": "./",
   "icons": [
     {
       "src": "https://firebasestorage.googleapis.com/v0/b/messageemeapp.appspot.com/o/alhijama%2F472208534_122180270408092809_6379164161521111948_n.jpg?alt=media&token=c2381395-7d6c-460c-a197-1a42d05b42c1",
@@ -55,7 +55,7 @@
       "name": "الشالات والطرحات",
       "short_name": "الشالات",
       "description": "تصفح مجموعة الشالات والطرحات",
-      "url": "/?category=shawls",
+      "url": "./?category=shawls",
       "icons": [
         {
           "src": "https://firebasestorage.googleapis.com/v0/b/messageemeapp.appspot.com/o/alhijama%2F472208534_122180270408092809_6379164161521111948_n.jpg?alt=media&token=c2381395-7d6c-460c-a197-1a42d05b42c1",
@@ -68,7 +68,7 @@
       "name": "السجادات التركية",
       "short_name": "السجادات",
       "description": "تصفح مجموعة السجادات التركية",
-      "url": "/?category=carpets",
+      "url": "./?category=carpets",
       "icons": [
         {
           "src": "https://firebasestorage.googleapis.com/v0/b/messageemeapp.appspot.com/o/alhijama%2F472208534_122180270408092809_6379164161521111948_n.jpg?alt=media&token=c2381395-7d6c-460c-a197-1a42d05b42c1",
@@ -81,7 +81,7 @@
       "name": "مستلزمات الحج والعمرة",
       "short_name": "الحج والعمرة",
       "description": "تصفح مستلزمات الحج والعمرة",
-      "url": "/?category=hajj",
+      "url": "./?category=hajj",
       "icons": [
         {
           "src": "https://firebasestorage.googleapis.com/v0/b/messageemeapp.appspot.com/o/alhijama%2F472208534_122180270408092809_6379164161521111948_n.jpg?alt=media&token=c2381395-7d6c-460c-a197-1a42d05b42c1",
@@ -94,7 +94,7 @@
       "name": "المفضلة",
       "short_name": "المفضلة",
       "description": "عرض المنتجات المفضلة",
-      "url": "/?favorites=true",
+      "url": "./?favorites=true",
       "icons": [
         {
           "src": "https://firebasestorage.googleapis.com/v0/b/messageemeapp.appspot.com/o/alhijama%2F472208534_122180270408092809_6379164161521111948_n.jpg?alt=media&token=c2381395-7d6c-460c-a197-1a42d05b42c1",
@@ -106,7 +106,7 @@
   ],
   "file_handlers": [
     {
-      "action": "/",
+      "action": "./",
       "accept": {
         "image/*": [".jpg", ".jpeg", ".png", ".webp"]
       }
@@ -115,7 +115,7 @@
   "protocol_handlers": [
     {
       "protocol": "web+alhajami",
-      "url": "/?product=%s"
+      "url": "./?product=%s"
     }
   ]
 }
