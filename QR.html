@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مولد QR Code البسيط - محلات الحجامي</title>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Tajawal', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            text-align: center;
+            max-width: 500px;
+            width: 100%;
+        }
+
+        .logo {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #8B5CF6, #A855F7);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            color: white;
+            font-size: 2rem;
+            font-weight: bold;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 1.8rem;
+        }
+
+        .subtitle {
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        .url-input {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #e1e5e9;
+            border-radius: 10px;
+            font-family: 'Tajawal', sans-serif;
+            font-size: 1rem;
+            margin-bottom: 20px;
+            text-align: center;
+            direction: ltr;
+        }
+
+        .url-input:focus {
+            outline: none;
+            border-color: #8B5CF6;
+        }
+
+        .qr-display {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 20px;
+            margin: 20px 0;
+            min-height: 300px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .qr-image {
+            max-width: 256px;
+            max-height: 256px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .btn {
+            background: linear-gradient(135deg, #8B5CF6, #A855F7);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 10px;
+            font-family: 'Tajawal', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            margin: 10px;
+            transition: transform 0.2s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .btn.secondary {
+            background: linear-gradient(135deg, #06B6D4, #0891B2);
+        }
+
+        .btn.success {
+            background: linear-gradient(135deg, #10B981, #059669);
+        }
+
+        .info-box {
+            background: #e3f2fd;
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 20px;
+            text-align: right;
+            border: 1px solid #2196f3;
+        }
+
+        .info-title {
+            color: #1976d2;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .info-text {
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .alert {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            border-radius: 10px;
+            padding: 15px;
+            margin: 15px 0;
+            color: #856404;
+            font-weight: 600;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 20px;
+            }
+            
+            .btn {
+                width: 100%;
+                margin: 5px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo">ح</div>
+        <h1>مولد QR Code البسيط</h1>
+        <p class="subtitle">محلات الحجامي - أجود الشالات والطرحات</p>
+        
+        <div class="alert">
+            ⚠️ <strong>مهم:</strong> قم بتغيير الرابط أدناه لرابط موقعك الحقيقي
+        </div>
+        
+        <input type="text" class="url-input" id="appUrl" 
+               placeholder="https://your-domain.com/index.html"
+               value="https://your-domain.com/index.html">
+        
+        <div class="qr-display" id="qrDisplay">
+            <div style="color: #666; font-size: 1.1rem;">
+                📱 اضغط "إنشاء QR Code" لتوليد الكود
+            </div>
+        </div>
+        
+        <button class="btn" onclick="generateSimpleQR()">
+            🔗 إنشاء QR Code
+        </button>
+        
+        <button class="btn secondary" onclick="downloadQRImage()">
+            📥 تحميل الكود
+        </button>
+        
+        <button class="btn success" onclick="copyURL()">
+            📋 نسخ الرابط
+        </button>
+        
+        <div class="info-box">
+            <div class="info-title">📝 كيفية الاستخدام:</div>
+            <div class="info-text">
+                1. أدخل رابط تطبيقك في الحقل أعلاه<br>
+                2. اضغط "إنشاء QR Code"<br>
+                3. حمل الكود أو اطبعه<br>
+                4. شارك الكود مع العملاء<br>
+                5. عندما يمسحون الكود، سيفتح التطبيق!
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentQRUrl = '';
+
+        // إنشاء QR Code باستخدام خدمة مجانية
+        function generateSimpleQR() {
+            const urlInput = document.getElementById('appUrl');
+            const qrDisplay = document.getElementById('qrDisplay');
+            
+            let url = urlInput.value.trim();
+            
+            if (!url) {
+                alert('❌ يرجى إدخال رابط التطبيق');
+                return;
+            }
+            
+            // التحقق من صحة الرابط
+            if (!isValidURL(url)) {
+                alert('❌ الرابط غير صحيح! يجب أن يبدأ بـ http:// أو https://');
+                return;
+            }
+            
+            // إضافة معاملات التتبع
+            const finalUrl = addTrackingParams(url);
+            currentQRUrl = finalUrl;
+            
+            // عرض رسالة التحميل
+            qrDisplay.innerHTML = `
+                <div style="color: #8B5CF6; font-size: 1.1rem;">
+                    ⏳ جاري إنشاء QR Code...
+                </div>
+            `;
+            
+            // إنشاء QR Code باستخدام خدمة مجانية
+            const qrSize = 256;
+            const qrServiceUrl = `https://api.qrserver.com/v1/create-qr-code/?size=${qrSize}x${qrSize}&data=${encodeURIComponent(finalUrl)}&format=png&margin=10`;
+            
+            // إنشاء صورة QR Code
+            const qrImage = new Image();
+            qrImage.onload = function() {
+                qrDisplay.innerHTML = `
+                    <img src="${this.src}" alt="QR Code" class="qr-image" id="qrImage">
+                    <div style="margin-top: 15px; color: #10B981; font-weight: 600;">
+                        ✅ تم إنشاء QR Code بنجاح!
+                    </div>
+                    <div style="margin-top: 10px; color: #666; font-size: 0.9rem;">
+                        امسح الكود للوصول للتطبيق
+                    </div>
+                `;
+            };
+            
+            qrImage.onerror = function() {
+                // في حالة فشل الخدمة الأولى، جرب خدمة أخرى
+                const alternativeUrl = `https://chart.googleapis.com/chart?chs=${qrSize}x${qrSize}&cht=qr&chl=${encodeURIComponent(finalUrl)}`;
+                
+                const altImage = new Image();
+                altImage.onload = function() {
+                    qrDisplay.innerHTML = `
+                        <img src="${this.src}" alt="QR Code" class="qr-image" id="qrImage">
+                        <div style="margin-top: 15px; color: #10B981; font-weight: 600;">
+                            ✅ تم إنشاء QR Code بنجاح!
+                        </div>
+                    `;
+                };
+                
+                altImage.onerror = function() {
+                    // إذا فشلت كل الخدمات، اعرض رابط يدوي
+                    qrDisplay.innerHTML = `
+                        <div style="color: #ef4444; margin-bottom: 15px;">
+                            ❌ فشل في إنشاء QR Code تلقائياً
+                        </div>
+                        <div style="background: #f1f5f9; padding: 15px; border-radius: 10px; word-break: break-all; font-size: 0.9rem;">
+                            <strong>الرابط:</strong><br>
+                            ${finalUrl}
+                        </div>
+                        <div style="margin-top: 15px; color: #666; font-size: 0.9rem;">
+                            انسخ هذا الرابط واستخدم أي موقع لإنشاء QR Code
+                        </div>
+                    `;
+                };
+                
+                altImage.src = alternativeUrl;
+            };
+            
+            qrImage.src = qrServiceUrl;
+        }
+
+        // تحميل صورة QR Code
+        function downloadQRImage() {
+            const qrImage = document.getElementById('qrImage');
+            
+            if (!qrImage) {
+                alert('❌ لا يوجد QR Code للتحميل. قم بإنشاء الكود أولاً.');
+                return;
+            }
+            
+            try {
+                // إنشاء canvas لتحميل الصورة
+                const canvas = document.createElement('canvas');
+                const ctx = canvas.getContext('2d');
+                
+                canvas.width = qrImage.naturalWidth || 256;
+                canvas.height = qrImage.naturalHeight || 256;
+                
+                // رسم خلفية بيضاء
+                ctx.fillStyle = '#ffffff';
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+                
+                // رسم QR Code
+                ctx.drawImage(qrImage, 0, 0);
+                
+                // تحميل الصورة
+                const link = document.createElement('a');
+                link.download = `محلات-الحجامي-QR-${Date.now()}.png`;
+                link.href = canvas.toDataURL('image/png');
+                
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+                
+                alert('✅ تم تحميل QR Code بنجاح!');
+                
+            } catch (error) {
+                // في حالة الفشل، استخدم رابط مباشر
+                const link = document.createElement('a');
+                link.href = qrImage.src;
+                link.download = `محلات-الحجامي-QR-${Date.now()}.png`;
+                link.target = '_blank';
+                link.click();
+                
+                alert('✅ تم فتح QR Code في نافذة جديدة. احفظه من هناك.');
+            }
+        }
+
+        // نسخ الرابط
+        function copyURL() {
+            const urlInput = document.getElementById('appUrl');
+            let url = urlInput.value.trim();
+            
+            if (!url) {
+                alert('❌ يرجى إدخال رابط التطبيق');
+                return;
+            }
+            
+            const finalUrl = addTrackingParams(url);
+            
+            // محاولة نسخ الرابط
+            if (navigator.clipboard) {
+                navigator.clipboard.writeText(finalUrl).then(() => {
+                    alert('✅ تم نسخ الرابط إلى الحافظة');
+                }).catch(() => {
+                    fallbackCopy(finalUrl);
+                });
+            } else {
+                fallbackCopy(finalUrl);
+            }
+        }
+
+        // نسخ بديل للمتصفحات القديمة
+        function fallbackCopy(text) {
+            const textArea = document.createElement('textarea');
+            textArea.value = text;
+            textArea.style.position = 'fixed';
+            textArea.style.opacity = '0';
+            document.body.appendChild(textArea);
+            textArea.select();
+            
+            try {
+                document.execCommand('copy');
+                alert('✅ تم نسخ الرابط');
+            } catch (error) {
+                prompt('انسخ هذا الرابط:', text);
+            }
+            
+            document.body.removeChild(textArea);
+        }
+
+        // التحقق من صحة الرابط
+        function isValidURL(string) {
+            try {
+                const url = new URL(string);
+                return url.protocol === 'http:' || url.protocol === 'https:';
+            } catch (_) {
+                return false;
+            }
+        }
+
+        // إضافة معاملات التتبع
+        function addTrackingParams(url) {
+            try {
+                const urlObj = new URL(url);
+                urlObj.searchParams.set('source', 'qr');
+                urlObj.searchParams.set('install', 'true');
+                urlObj.searchParams.set('campaign', 'manual');
+                urlObj.searchParams.set('timestamp', Date.now());
+                return urlObj.toString();
+            } catch (error) {
+                // إذا فشل parsing، أرجع الرابط كما هو
+                return url;
+            }
+        }
+
+        // إنشاء QR Code عند الضغط على Enter
+        document.getElementById('appUrl').addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                generateSimpleQR();
+            }
+        });
+
+        // إنشاء QR Code تلقائياً عند تحميل الصفحة (بعد 2 ثانية)
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                const urlInput = document.getElementById('appUrl');
+                if (urlInput.value && urlInput.value !== 'https://your-domain.com/index.html') {
+                    generateSimpleQR();
+                }
+            }, 2000);
+        });
+
+        // تذكير المستخدم بتغيير الرابط
+        setTimeout(() => {
+            const urlInput = document.getElementById('appUrl');
+            if (urlInput.value === 'https://your-domain.com/index.html') {
+                alert('💡 تذكير مهم: لا تنس تغيير الرابط لرابط موقعك الحقيقي!');
+            }
+        }, 10000);
+    </script>
+</body>
+</html>
