@@ -1,9 +1,9 @@
 // Service Worker للعمل بدون اتصال
 const CACHE_NAME = 'alhajami-store-v1.2';
 const urlsToCache = [
-  '/',
-  '/index.html',
-  '/manifest.json',
+  './',
+  './index.html',
+  './manifest.json',
   'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css',
   'https://fonts.googleapis.com/css2?family=Tajawal:wght@200;300;400;500;700;800;900&display=swap',
   'https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js',
@@ -103,7 +103,7 @@ self.addEventListener('fetch', (event) => {
             
             // إرجاع صفحة بديلة عند عدم الاتصال
             if (event.request.destination === 'document') {
-              return caches.match('/');
+              return caches.match('./');
             }
             
             // إرجاع صورة بديلة للصور
@@ -165,7 +165,7 @@ self.addEventListener('push', (event) => {
     icon: 'https://firebasestorage.googleapis.com/v0/b/messageemeapp.appspot.com/o/alhijama%2F472208534_122180270408092809_6379164161521111948_n.jpg?alt=media&token=c2381395-7d6c-460c-a197-1a42d05b42c1',
     badge: 'https://firebasestorage.googleapis.com/v0/b/messageemeapp.appspot.com/o/alhijama%2F472208534_122180270408092809_6379164161521111948_n.jpg?alt=media&token=c2381395-7d6c-460c-a197-1a42d05b42c1',
     data: {
-      url: '/'
+      url: './'
     },
     actions: [
       {
@@ -192,7 +192,7 @@ self.addEventListener('notificationclick', (event) => {
   
   if (event.action === 'open' || !event.action) {
     event.waitUntil(
-      clients.openWindow(event.notification.data.url || '/')
+      clients.openWindow(event.notification.data.url || './')
     );
   }
 });
